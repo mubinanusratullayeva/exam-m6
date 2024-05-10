@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<style>
+    form {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        row-gap: 15px;
+        color: white;
+    }
+
+    label {
+        display: flex;
+        column-gap: 8px;
+        font-size: large;
+    }
+
+    input {
+        padding: 8px;
+        outline: none;
+        background-color: rgba(100, 148, 237, 0.683);
+        color: white;
+        border: none;
+    }
+
+    input::placeholder {
+        color: white;
+    }
+
+    button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: rgb(104, 157, 255);
+        cursor: pointer;
+    }
+
+    button:hover {
+        transition: all 0.4s;
+        background-color: rgba(100, 148, 237, 0.479);
+    }
+
+    table {
+        margin-top: 60px;
+        width: 100%;
+        text-align: center;
+    }
+
+    th,
+    td {
+        padding: 10px 0;
+        margin: 10px 0;
+        border: 1px solid rgb(0, 124, 240);
+    }
+
+    th {
+        color: gainsboro;
+        font-size: xx-large;
+    }
+
+    td a {
+        padding: 10px 30px;
+        margin: 10px 0;
+        color: white;
+        font-size: larger;
+    }
+
+    tr:not(.tha):hover {
+        transition: all 0.5s;
+        transform: scale(1.1);
+        background-color: rgb(0, 124, 240);
+    }
+</style>
+
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>
+            nation: <input type="text" name="nation" placeholder="enter the nation">
+        </label>
+        <label>
+            country: <input type="text" name="country" placeholder="enter the country">
+        </label>
+        <label>
+            code: <input type="number" name="code" placeholder="enter code">
+        </label>
+        <label>
+            flag: <input type="file" name="flag" value="choose the flag">
+        </label>
+        <input type="submit" value="Submit" />
+    </form>
+    <table>
+        <tr class="tha">
+            <th>id</th>
+            <th>Nation</th>
+            <th>Country</th>
+            <th>Code</th>
+            <th>Flag</th>
+        </tr>
+        {% for obj in nations %}
+        <tr>
+            <td>
+                <a href="{% url 'nation_info' obj.id %}">
+                    {{ obj.id }}
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'nation_info' obj.id %}">
+                    {{ obj.nation }}
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'nation_info' obj.id %}">
+                    {{ obj.country }}
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'nation_info' obj.id %}">
+                    {{ obj.numb }}
+            </td>
+            <td>
+                <a href="{% url 'nation_info' obj.id %}">
+                    <img style='cursor: pointer;' width="30" height="20" src="{{ obj.flag }}"
+                        alt="the flag of {{obj.country}}">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

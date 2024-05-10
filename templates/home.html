@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'Css/home.css' %}">
+
+{% block content %}
+
+<style>
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .hero_desc {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 80px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 900;
+        font-style: italic;
+        text-transform: capitalize;
+        color: rgb(154, 153, 153);
+    }
+
+    h1+p {
+        color: aliceblue;
+    }
+
+    .hero_desc p:nth-child(3) {
+        padding-top: 12px;
+        color: rgb(87, 89, 110);
+        width: 420px;
+    }
+
+    .foo {
+        animation: spin 11.15s linear infinite;
+    }
+
+    @keyframes spin {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<header>
+    <div class="container">
+        <div class="hero">
+            <div class="hero_desc">
+                <h1>world has 100+ nations</h1>
+                <p>Lorem ipsum dolor > itaque corrupti molestias</p>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil tempore, earum perferendis quis
+                    veniam, animi itaque corrupti molestias architecto ad odit sapiente atque voluptas debitis
+                    explicabo, doloribus porro quo. Sint.</p>
+            </div>
+            <img class="foo" width="450" height="450" src="{% static 'img/clipart-earth-venus-16.png' %}"
+                alt="hero section's world img">
+        </div>
+    </div>
+</header>
+{% endblock %}

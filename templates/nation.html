@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .card{
+        margin-top: 40px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        font-size: 18px;
+        font-weight: 400;
+        row-gap: 8px;
+        border: 1px dotted blue;
+    }
+    .del {
+        background-color: rgb(135, 20, 20);
+        color: white;
+        border: none;
+        margin-left: 7px;
+    }
+
+    .ed {
+        background-color: rgb(5, 104, 5);
+        color: white;
+        border: none;
+        margin-left: 7px;
+    }
+</style>
+
+<section>
+    <div class="container">
+        <div class="card">
+            <p style="color: aliceblue;">N0-: {{ nation.id }}</p>
+            <p style="color: aliceblue;">Nation: {{ nation.nation }}</p>
+            <p style="color: aliceblue;">Country: {{ nation.country }}</p>
+            <p style="color: aliceblue;">Code: {{ nation.numb }}</p>
+            <img width="60" height="40" src="{{ nation.flag }}" alt="flag of {{nation.country}}">
+        </div>
+    </div>
+</section>
+{% endblock %}
